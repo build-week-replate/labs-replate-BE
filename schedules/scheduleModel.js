@@ -4,7 +4,8 @@ module.exports = {
   insert,
   getOneById,
   getAllByCompanyId,
-  getAll
+  getAll,
+  update
 };
 
 function insert(location) {

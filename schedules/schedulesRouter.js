@@ -49,12 +49,11 @@ router.patch("/:id", async (req, res) => {
       return res.status(404).json({ msg: "This schedule does not exist" });
     }
 
-    if (!oldSchedule.company_id !== req.decoded.subject) {
+    if (oldSchedule.company_id !== req.decoded.subject) {
       return res.status(401).json({ msg: "Unauthorized" });
     }
 
-    const newSchedule = await Schedule.insert({
-      ...oldSchedule,
+    const newSchedule = await Schedule.update(req.params.id, {
       ...req.body
     });
 
