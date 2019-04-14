@@ -1,5 +1,10 @@
 const db = require("../data/dbConfig");
 
+//for cleaning up the db
+// const knexCleaner = require("knex-cleaner");
+
+// knexCleaner.clean(db);
+
 module.exports = {
   insert,
   getOne,
