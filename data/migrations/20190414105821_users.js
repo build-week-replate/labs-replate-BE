@@ -34,6 +34,24 @@ exports.up = function(knex, Promise) {
         .inTable("users")
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
+    })
+    .createTable("schedules", tbl => {
+      tbl.increments();
+
+      tbl.string("pickup_name", 128).notNullable();
+      tbl.string("pickup_date", 128).notNullable();
+      tbl.string("pickup_time", 128).notNullable();
+      tbl.string("pickup_comment", 255).notNullable();
+      tbl.string("pickup_additional_comment", 255);
+
+      tbl
+        .integer("company_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onDelete("RESTRICT")
+        .onUpdate("CASCADE");
     });
 };
 
