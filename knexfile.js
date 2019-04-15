@@ -24,21 +24,22 @@ module.exports = {
     seeds: {
       directory: "./data/seeds"
     }
-  }
+  },
   //for later
-  // production: {
-  //   client: 'postgresql',
-  //   connection: {
-  //     database: 'my_db',
-  //     user:     'username',
-  //     password: 'password'
-  //   },
-  //   pool: {
-  //     min: 2,
-  //     max: 10
-  //   },
-  //   migrations: {
-  //     tableName: 'knex_migrations'
-  //   }
-  // }
+  production: {
+    client: "postgresql",
+    connection: {
+      database: "d4qq283pkq0v9c",
+      user: "ctanqwofacgvba",
+      password:
+        "0bd0ce14117dcd1f8a85c900478d28d753d1d6ddececab2b399969d7b91bff23"
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      directory: "./data/migrations"
+    }
+  }
 };

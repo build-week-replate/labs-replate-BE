@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
   try {
     const newSchedule = await Schedule.insert({
       ...req.body,
+      taken: false,
       company_id: req.decoded.subject
     });
 
@@ -60,6 +61,31 @@ router.patch("/:id", async (req, res) => {
     res.status(201).json(newSchedule);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.patch("/:id/take", async (req, res) => {
+  try {
+    const schedule = await Schedule.getOneById(req.params.id);
+
+    if (!schedule) {
+      return res.status(404).json({ msg: "Schedule not found" });
+    }
+
+    if (schedule.company_id === req.decoded.subject) {
+      res
+        .status(422)
+        .json({ msg: "A company can not accept a request for volunteers" });
+    }
+
+    const newSchedule = await Schedule.update(req.params.id, {
+      volunteer_id: req.decoded.subject,
+      taken: true
+    });
+
+    res.status(201).json(newSchedule);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 

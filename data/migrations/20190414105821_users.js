@@ -43,6 +43,15 @@ exports.up = function(knex, Promise) {
       tbl.string("pickup_time", 128).notNullable();
       tbl.string("pickup_comment", 255).notNullable();
       tbl.string("pickup_additional_comment", 255);
+      tbl.boolean("taken").notNullable();
+
+      tbl
+        .integer("volunteer_id")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("RESTRICT")
+        .onUpdate("CASCADE");
 
       tbl
         .integer("company_id")
