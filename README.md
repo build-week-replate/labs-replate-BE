@@ -115,3 +115,101 @@ Return
     "password": "$2a$08$pfgKJgNmQbj/enJxoTgxQ.VfPxUfjy523yW1a1pMcTdi7keZl.rC."
 }
 ```
+
+## Location Endpoints
+
+### GET the locations of a specific company - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/locations/:companyId
+
+```
+[
+    {
+        "id": 1,
+        "office_name": "Apple",
+        "office_address": "Cupertino, CA",
+        "office_email": null,
+        "company_id": 1
+    }
+]
+```
+
+### POST add a location to a specific company - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/locations
+
+```
+    {
+        "office_name": "string"
+        "office_address": "string"
+        "office_email": "string" // optional
+    }
+```
+
+## Schedule endpoints
+
+### POST add a schedule - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/schedules
+
+```
+{
+	"pickup_name": "string",
+	"pickup_date": "string",
+	"pickup_time": "string",
+	"pickup_comment": "string",
+    "pickup_additional_comment": "string" // optional
+}
+
+```
+
+```
+    Returns the schedule id
+    [
+        id
+    ]
+```
+
+### GET retrieve all of the schedules ever posted - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/schedules
+
+```
+[
+    {
+        "id": 1,
+        "pickup_name": "whatever",
+        "pickup_date": "14 september",
+        "pickup_time": "midnight",
+        "pickup_comment": "this is a test comment",
+        "pickup_additional_comment": null, // can be a string
+        "taken": 0, // defaults to 0 for false and to 1 for true
+        "volunteer_id": null, // will be completed once a volunteer takes the schedule
+        "company_id": 1 // is automatically set in when posting a schedule
+    }
+]
+```
+
+### PATCH edit a schedule - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/schedules/:id
+
+where id is the one of a schedule
+
+```
+{
+	"pickup_name": "string",
+	"pickup_date": "string",
+	"pickup_time": "string",
+	"pickup_comment": "string",
+    "pickup_additional_comment": "string" // optional
+}
+```
+
+### PATCH take a schedule - RESTRICTED
+
+https://replate-backend-turcan.herokuapp.com/api/schedules/:id/take
+
+It is an empty request, all you have to do is provide the token.
+
+NOTE: A company can not take a schedule, it must be a volunteer
