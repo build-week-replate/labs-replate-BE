@@ -213,3 +213,9 @@ https://replate-backend-turcan.herokuapp.com/api/schedules/:id/take
 It is an empty request, all you have to do is provide the token.
 
 NOTE: A company can not take a schedule, it must be a volunteer
+
+### DELETE - deletes a schedulee
+
+https://replate-backend-turcan.herokuapp.com/api/schedules/:id/
+
+will delete the schedule with the specified id
