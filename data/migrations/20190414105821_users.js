@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
         .notNullable()
         .unique();
 
-      tbl.integer("phone").notNullable();
+      tbl.string("phone").notNullable();
 
       tbl.string("type", 128).notNullable();
 

@@ -15,7 +15,9 @@ module.exports = {
 async function insert(user) {
   const [id] = await db("users").insert(user);
 
-  return getOne(id);
+  return db("users")
+    .where({ id })
+    .first();
 }
 
 function getOne(id) {
