@@ -101,7 +101,7 @@ router.delete("/:id", async (req, res) => {
   }
 
   try {
-    const deleted = await Schedule.delete(req.params.id);
+    const deleted = await Schedule.remove(req.params.id);
 
     return res.status(200).json(deleted);
   } catch (error) {

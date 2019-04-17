@@ -5,7 +5,8 @@ module.exports = {
   getOneById,
   getAllByCompanyId,
   getAll,
-  update
+  update,
+  remove
 };
 
 function insert(location) {
@@ -30,4 +31,10 @@ function update(id, fields) {
   return db("schedules")
     .where({ id })
     .update(fields);
+}
+
+function remove(id) {
+  return db("schedules")
+    .delete()
+    .where({ id });
 }
