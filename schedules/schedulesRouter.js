@@ -17,9 +17,21 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { pickup_name, pickup_date, pickup_time, pickup_comment } = req.body;
+  const {
+    pickup_name,
+    pickup_date,
+    pickup_time,
+    pickup_comment,
+    location_id
+  } = req.body;
 
-  if (!pickup_comment || !pickup_date || !pickup_name || !pickup_time) {
+  if (
+    !pickup_comment ||
+    !pickup_date ||
+    !pickup_name ||
+    !pickup_time ||
+    !location_id
+  ) {
     return res.status(400).json({ msg: "Bad request" });
   }
 

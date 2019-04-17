@@ -158,7 +158,8 @@ https://replate-backend-turcan.herokuapp.com/api/schedules
 	"pickup_date": "string",
 	"pickup_time": "string",
 	"pickup_comment": "string",
-    "pickup_additional_comment": "string" // optional
+    "pickup_additional_comment": "string" // optional,
+    "location_id": integer
 }
 
 ```
@@ -178,15 +179,20 @@ https://replate-backend-turcan.herokuapp.com/api/schedules
 [
     {
         "id": 1,
-        "pickup_name": "whatever",
+        "pickup_name": "in db",
         "pickup_date": "14 september",
         "pickup_time": "midnight",
-        "pickup_comment": "this is a test comment",
-        "pickup_additional_comment": null, // can be a string
-        "taken": 0, // defaults to 0 for false and to 1 for true
-        "volunteer_id": null, // will be completed once a volunteer takes the schedule
-        "company_id": 1 // is automatically set in when posting a schedule
+        "pickup_comment": " this is a test comment",
+        "pickup_additional_comment": null,
+        "taken": 0,
+        "volunteer_id": null,
+        "location_id": 1,
+        "company_id": 1,
+        "office_name": "Apple",
+        "office_address": "Cupertino, CA",
+        "office_email": null
     }
+]
 ]
 ```
 
@@ -202,7 +208,8 @@ where id is the one of a schedule
 	"pickup_date": "string",
 	"pickup_time": "string",
 	"pickup_comment": "string",
-    "pickup_additional_comment": "string" // optional
+    "pickup_additional_comment": "string" // optional,
+    "location_id": integer
 }
 ```
 

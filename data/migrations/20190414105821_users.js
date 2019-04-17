@@ -54,6 +54,15 @@ exports.up = function(knex, Promise) {
         .onUpdate("CASCADE");
 
       tbl
+        .integer("location_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("locations")
+        .onDelete("RESTRICT")
+        .onUpdate("CASCADE");
+
+      tbl
         .integer("company_id")
         .unsigned()
         .notNullable()
