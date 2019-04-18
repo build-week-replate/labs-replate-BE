@@ -1,6 +1,5 @@
-const db = require("../data/testDbConfig");
+const db = require("../data/dbConfig");
 const server = require("../api/server");
-const Users = require("./usersModal");
 const request = require("supertest");
 
 describe("users router", () => {
@@ -10,9 +9,6 @@ describe("users router", () => {
     });
 
     it("creates a user successfully", async () => {
-      //   await knexCleaner.clean(db);
-      await db("users").truncate();
-
       const res = await request(server)
         .post("/api/users/")
         .send({
@@ -23,8 +19,6 @@ describe("users router", () => {
           password: "qwerty"
         })
         .expect(201);
-
-      console.log(res.body.user.id);
 
       expect(res.body.user.id).toEqual(1);
     });
@@ -49,8 +43,6 @@ describe("users router", () => {
         .post("/api/users/login")
         .send({ email: "a@a.com", password: "qwerty" })
         .expect(200);
-
-      console.log(res.body);
 
       expect(res.body.token).toBeTruthy();
     });

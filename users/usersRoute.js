@@ -55,7 +55,6 @@ router.post("/login", async (req, res) => {
 
   try {
     const user = await Users.getOneByEmail(email);
-    console.log(user);
 
     if (bcrypt.compareSync(password, user.password)) {
       const token = generateToken(user);

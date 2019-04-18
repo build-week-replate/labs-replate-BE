@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const usersRoute = require("../users/usersRoute");
 const locationsRouter = require("../locations/locationsRoute");
 const schedulesRouter = require("../schedules/schedulesRouter");
+require("dotenv").config();
 
 const server = express();
 server.use(helmet());
