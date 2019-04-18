@@ -37,12 +37,11 @@ function getAllByCompanyId(id) {
 }
 
 function getAll() {
-  return db
+  return db("schedules")
+    .innerJoin("locations", "schedules.location_id", "=", "locations.id")
     .select(
       "schedules.id, schedules.pickup_name, schedules.pickup_date, schedules.pickup_time, schedules.pickup_comment, schedules.pickup_additional_comment, schedules.taken, schedules.volunteer_id, schedules.location_id, schedules.company_id, locations.office_name, locations.office_address, locations.office_email"
-    )
-    .from("schedules")
-    .innerJoin("locations", "schedules.location_id", "=", "locations.id");
+    );
 }
 
 function update(id, fields) {
