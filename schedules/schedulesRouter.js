@@ -56,11 +56,7 @@ router.patch("/:id", async (req, res) => {
   }
 
   try {
-    const all = await Schedule.getAll();
-    console.log(all);
     const oldSchedule = await Schedule.getOneById(req.params.id);
-
-    console.log(oldSchedule);
 
     if (!oldSchedule) {
       return res.status(404).json({ msg: "This schedule does not exist" });
